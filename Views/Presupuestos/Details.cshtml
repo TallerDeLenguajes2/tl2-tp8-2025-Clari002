@@ -1,0 +1,49 @@
+@*creado en paso 2 *@
+@model tl2_tp8_2025_Clari002.Models.Presupuestos
+
+@{
+    ViewData["Title"] = "Detalle del Presupuesto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h4>Presupuesto N° @Model.IdPresupuesto</h4>
+        <p><strong>Destinatario:</strong>@Model.NombreDestinatario</p>
+        <p><strong>Fecha de creacion:</strong>@Model.FechaCreacion.ToShortDateString()</p>
+        <p><strong>Cantidad total de productos:</strong>@Model.CantidadProductos()</p>
+        <p><strong>Monto total:</strong>$@Model.MontoPresupuesto()</p>
+        <p><strong>Monto con IVA:</strong>$@Model.MontoPresupuestoConIva()</p>
+    </div>
+</div>
+
+<h4>Productos del Presupuesto</h4>
+
+@if (Model.Detalle.Count==0)
+{
+    <p><em>No hay productos asociados</em></p>
+}else{
+    <table class="="table table-striped">
+        <thead>
+            <tr>
+                <th>Descripcion</th>
+                <th>Precio Unitorio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var det in Model.Detalle)
+        {
+            <tr>
+                <td>@det.Producto.Descripcion</td>
+                <td>$@det.Producto.Precio</td>
+                <td>@det.Cantidad</td>
+                <td>$@(det.Producto.Precio * det.Cantidad)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+

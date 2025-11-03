@@ -13,6 +13,7 @@
             <th>ID</th>
             <th>Destinatario</th>
             <th>Fecha de Creación</th>
+            <th></th>@*agregado para que se vea Ver Detalle*@
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,10 @@
                 <td>@p.IdPresupuesto</td>
                 <td>@p.NombreDestinatario</td>
                 <td>@p.FechaCreacion.ToShortDateString()</td>
+                @*Agregado*@
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id= "@p.IdPresupuesto">Ver Detalle</a>
+                </td>
             </tr>
         }
     </tbody>

@@ -88,7 +88,7 @@ namespace tl2_tp8_2025_Clari002.Repositorios
                 }
 
 
-                string sqlDet = @"SELECT pd.Cantidad, pro.Descripcion, pro.Precio FROM PresupuestosDetalle pd 
+                string sqlDet = @"SELECT pd.Cantidad, pro.idProducto, pro.Descripcion, pro.Precio FROM PresupuestosDetalle pd 
                                   INNER JOIN  Productos pro ON pd.idProducto = pro.idProducto 
                                   WHERE pd.idPresupuesto = @IdBuscado";
                 using var comandoDet = new SqliteCommand(sqlDet, conexion);
