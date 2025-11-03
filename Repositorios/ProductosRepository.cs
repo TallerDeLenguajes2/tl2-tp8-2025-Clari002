@@ -4,6 +4,7 @@ using tl2_tp8_2025_Clari002.Models;
 
 namespace tl2_tp8_2025_Clari002.Repositorios
 {
+    //Repositorio creado en paso 1
     public class ProductosRepository
     {
         private string cadenaConexion = "Data Source=Tienda_final.db;";
@@ -66,7 +67,7 @@ namespace tl2_tp8_2025_Clari002.Repositorios
                 {
                     IdProducto = Convert.ToInt32(lector["idProducto"]),
                     Descripcion = lector["Descripcion"].ToString(),
-                    Precio = Convert.ToInt32(lector["Precio"])
+                    Precio = Convert.ToDouble(lector["Precio"])
 
                 };
                 productos.Add(producto);
@@ -92,7 +93,7 @@ namespace tl2_tp8_2025_Clari002.Repositorios
                     {
                         IdProducto = Convert.ToInt32(lector["idProducto"]),
                         Descripcion = lector["Descripcion"].ToString(),
-                        Precio = Convert.ToInt32(lector["Precio"])
+                        Precio = Convert.ToDouble(lector["Precio"])
                     };
                     return producto;
                 }

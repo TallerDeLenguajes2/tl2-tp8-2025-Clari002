@@ -103,7 +103,7 @@ namespace tl2_tp8_2025_Clari002.Repositorios
                         {
                             IdProducto = Convert.ToInt32(lectorDet["idProducto"]),
                             Descripcion = lectorDet["Descripcion"].ToString(),
-                            Precio = Convert.ToInt32(lectorDet["Precio"])
+                            Precio = Convert.ToDouble(lectorDet["Precio"])
                             //si fuera double
                             //Precio = Convert.ToDouble(lectorDet["Precio])
                         },

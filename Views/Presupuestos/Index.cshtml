@@ -1,0 +1,28 @@
+@*creado en paso 1 *@
+@model List<tl2_tp8_2025_Clari002.Models.Presupuestos>
+
+@{
+    ViewData["Title"] = "Listado de Presupuestos";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Destinatario</th>
+            <th>Fecha de Creación</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.IdPresupuesto</td>
+                <td>@p.NombreDestinatario</td>
+                <td>@p.FechaCreacion.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

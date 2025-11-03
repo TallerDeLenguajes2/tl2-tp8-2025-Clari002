@@ -1,0 +1,34 @@
+
+@*Creo en paso 1 Productos/Index.cshtml*@
+@model List<tl2_tp8_2025_Clari002.Models.Productos>
+
+@{
+    ViewData["Title"] = "Listado de Productos";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var producto in Model)
+        {
+            <tr>
+                <td>@producto.IdProducto</td>
+                <td>@producto.Descripcion</td>
+                <td>@producto.Precio</td>
+            </tr>
+                
+        }
+    </tbody>
+</table>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
