@@ -138,7 +138,7 @@ namespace tl2_tp8_2025_Clari002.Repositorios
                 return filasAfectadas > 0;
             }
         }
-        
+
         public bool EliminarPresupuesto(int idPresupuestoEiminar)
         {
             using (var conexion = new SqliteConnection(cadenaConexion))
@@ -160,12 +160,30 @@ namespace tl2_tp8_2025_Clari002.Repositorios
                 {
                     comando.Parameters.AddWithValue("@IdEliminar", idPresupuestoEiminar);
                     int filasAfectadas = comando.ExecuteNonQuery();
-                    
+
                     //Devuelve true si se elimino al menos una fila
                     return filasAfectadas > 0;
-                    
-                }                
-                
+
+                }
+
+            }
+        }
+        
+        //modificar presupuesto
+        public void ModificarPresupuesto(int idPresupuestoBuscado, Presupuestos presupuesto)
+        {
+            using (var conexion = new SqliteConnection(cadenaConexion))
+            {
+                conexion.Open();
+
+                string sql = "UPDATE Presupuestos SET NombreDestinatario=@NombreDestinatario, FechaCreacion=@FechaCreacion WHERE idPresupuesto=@idPresupuesto";
+                using var comando = new SqliteCommand(sql, conexion);
+
+                comando.Parameters.Add(new SqliteParameter("@NombreDestinatario", presupuesto.NombreDestinatario));
+                comando.Parameters.Add(new SqliteParameter("@FechaCreacion", presupuesto.FechaCreacion));
+                comando.Parameters.Add(new SqliteParameter("@idPresupuesto", idPresupuestoBuscado));
+
+                comando.ExecuteNonQuery();
             }
         }
     }

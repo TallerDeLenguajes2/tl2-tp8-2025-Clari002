@@ -1,0 +1,21 @@
+@model tl2_tp8_2025_Clari002.Models.Presupuestos
+
+@{
+    ViewData["Title"] = "Editar presupuesto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="IdPresupuesto"/>
+    <div class="mb-3">
+        <label class="form-label">Nombre del destinatario</label>
+        <input asp-for="NombreDestinatario" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fecha</label>
+        <input asp-for="FechaCreacion" class="form-control" type="date"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

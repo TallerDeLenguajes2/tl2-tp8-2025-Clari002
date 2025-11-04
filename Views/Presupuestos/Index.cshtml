@@ -13,7 +13,7 @@
             <th>ID</th>
             <th>Destinatario</th>
             <th>Fecha de Creación</th>
-            <th></th>@*agregado para que se vea Ver Detalle*@
+            <th>Acciones</th>@*agregado para que se vea Ver Detalle*@
         </tr>
     </thead>
     <tbody>
@@ -23,11 +23,19 @@
                 <td>@p.IdPresupuesto</td>
                 <td>@p.NombreDestinatario</td>
                 <td>@p.FechaCreacion.ToShortDateString()</td>
-                @*Agregado*@
+                @*Agregado de paso 2 para ver detalle*@
                 <td>
                     <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id= "@p.IdPresupuesto">Ver Detalle</a>
+                    @*agrego de paso 3 eliminar*@
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@p.IdPresupuesto">Eliminar</a>
+                    @*agrego para editar*@
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@p.IdPresupuesto" >Editar</a>
+
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<p>
+    <a asp-action="Create" class="btn btn-success">+ Nuevo Presupuesto</a>
+</p>

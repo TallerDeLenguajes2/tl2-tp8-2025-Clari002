@@ -1,0 +1,21 @@
+@model tl2_tp8_2025_Clari002.Models.Productos
+
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="IdProducto"/>
+    <div class="mb-3">
+        <label class="form-label">Descripcion</label>
+        <input asp-for="Descripcion" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Precio</label>
+        <input asp-for="Precio" class="form-control" type="number"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

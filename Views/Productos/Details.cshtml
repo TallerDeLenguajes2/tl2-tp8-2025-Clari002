@@ -1,0 +1,20 @@
+@model tl2_tp8_2025_Clari002.Models.Productos
+
+@{
+    ViewData["Title"] = "Detalle del Producto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Descripcion</h5>
+        <p class="card-text">
+            <strong>ID:</strong> @Model.IdProducto <br />
+            <strong>Precio:</strong> $@Model.Precio
+        </p>
+        <a asp-action="Edit" asp-route-id="@Model.IdProducto" class="btn btn-warning">Editar</a>
+        <a asp-action="Delete" asp-route-id="@Model.IdProducto" class="btn btn-sm btn-danger">Eliminar</a>
+        <a asp-action="Index" class="btn btn-secondary">Volver</a>
+    </div>
+</div>

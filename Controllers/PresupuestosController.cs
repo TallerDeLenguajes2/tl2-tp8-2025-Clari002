@@ -33,6 +33,62 @@ namespace tl2_tp8_2025_Clari002.Controllers
             }
             return View(presupuesto);
         }
+
+        //agrego acciones paso 3
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Presupuestos presupuesto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(presupuesto);
+            }
+            _repo.CrearPresupuesto(presupuesto);
+            return RedirectToAction("Index");
+        }
+        //acciones para eliminar presupuesto
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var presupuesto = _repo.BuscarPresupuestoPorId(id);
+            if (presupuesto == null)
+            {
+                return NotFound();
+            }
+            return View(presupuesto);
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            _repo.EliminarPresupuesto(id);
+            return RedirectToAction("Index");
+        }
+             //agrego metodo Edit
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var presupuesto = _repo.BuscarPresupuestoPorId(id);
+            if (presupuesto == null)
+            {
+                return NotFound();
+            }
+            return View(presupuesto);
+        }
+        [HttpPost]
+        public IActionResult Edit(int id, Presupuestos presupuesto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(presupuesto);
+            }
+            _repo.ModificarPresupuesto(id, presupuesto);
+            return RedirectToAction("Index");
+        }
     }
     
 }

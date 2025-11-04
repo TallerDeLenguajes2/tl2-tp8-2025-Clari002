@@ -14,6 +14,8 @@
             <th>ID</th>
             <th>Descripcion</th>
             <th>Precio</th>
+            @*agregar boton de editar paso 3*@
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -23,11 +25,22 @@
                 <td>@producto.IdProducto</td>
                 <td>@producto.Descripcion</td>
                 <td>@producto.Precio</td>
+                @*agregar para editar y eliminar paso 3*@
+                <td>
+                    <a asp-action="Details" asp-route-id="@producto.IdProducto" class="btn btn-sm btn-info">Ver</a>
+                    <a asp-action="Edit" asp-route-id="@producto.IdProducto" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@producto.IdProducto" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
             </tr>
                 
         }
     </tbody>
 </table>
+@*agrego de paso 3 para que me lleve al formulario para crrear un producto*@
+<p>
+    <a asp-action="Create" class="btn btn-success">+ Nuevo Producto</a>
+
+</p>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>

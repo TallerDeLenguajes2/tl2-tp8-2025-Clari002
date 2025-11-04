@@ -1,0 +1,18 @@
+@*creado en paso 3 *@
+@model tl2_tp8_2025_Clari002.Models.Presupuestos
+
+@{
+    ViewData["Title"] = "Crear Presupuesto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label">Nombre del destinatario</label>
+        <input asp-for="NombreDestinatario" class="form-control"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

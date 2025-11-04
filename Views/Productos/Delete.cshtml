@@ -1,0 +1,16 @@
+@model tl2_tp8_2025_Clari002.Models.Productos
+
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>¿Estás seguro de eliminar este producto?</h4>
+<p><strong>@Model.Descripcion</strong> - @Model.Precio</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="IdProducto"/>
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
