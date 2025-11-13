@@ -1,30 +1,32 @@
+@model tl2_tp8_2025_Clari002.ViewModels.AgregarproductoViewModel
 @{
     ViewData["Title"] = "Agregar producto al presupuesto";
-    var productos = ViewBag.Productos as List<tl2_tp8_2025_Clari002.Models.Productos>;
-    int idPresupuesto = ViewBag.IdPresupuesto;
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2>@ViewData["Title"] Nro @Model.IdPresupuesto</h2>
 
 <form asp-action="AgregarProducto" method="post">
-    <input type="hidden" name="idPresupuesto" value="@idPresupuesto" />
+    <input type="hidden" asp-for="IdPresupuesto" />
 
     <div class="mb-3">
-        <label class="form-label">Producto</label>
-        <select class="form-select" name="idProducto">
-            @foreach (var p in productos)
-            {
-                <option value="@p.IdProducto">@p.Descripcion - $@p.Precio</option>
-            }
+        <label asp-for="IdProducto"></label>
+        <select asp-for="IdProducto" asp-items="Model.ListaProductos" class="form-control">
+            <option value="">--Seleccione un producto</option>
         </select>
+        <span asp-validation-for="IdProducto" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Cantidad</label>
-        <input type="number" name="cantidad" class="form-control" min="1" required />
+        <label asp-for="Cantidad"></label>
+        <input asp-for="Cantidad" class="form-control" min="1" required />
+        <span asp-validation-for="Cantidad" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Agregar</button>
-    <a asp-action="Details" asp-route-id="@idPresupuesto" class="btn btn-secondary">Volver</a>
+
 </form>
 @*ahora agrego un boton en la vista Details para ver esto*@
+
+@section Scripts {
+    z<partial name="_ValidationScriptsPartial"/>
+}

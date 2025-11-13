@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using tl2_tp8_2025_Clari002.Models;
 using tl2_tp8_2025_Clari002.Repositorios;
+using tl2_tp8_2025_Clari002.ViewModels;//agregado tp9
 
 namespace tl2_tp8_2025_Clari002.Controllers
 {
@@ -30,12 +31,18 @@ namespace tl2_tp8_2025_Clari002.Controllers
         }
 
         [HttpPost]//recibo los datos del form y los guardo en la base con _repo.CrearProducto()
-        public IActionResult Create(Productos producto)
+       //modificar tp9
+         public IActionResult Create(ProductoViewModel productoVM)
         {
             if (!ModelState.IsValid)
             {
-                return View(producto);
+                return View(productoVM);
             }
+            var producto = new Productos
+            {
+                Descripcion = productoVM.Descripcion,
+                Precio = productoVM.Precio
+            };
             _repo.CrearProducto(producto);
             return RedirectToAction("Index");
         }
@@ -51,12 +58,23 @@ namespace tl2_tp8_2025_Clari002.Controllers
             return View(producto);
         }
         [HttpPost]
-        public IActionResult Edit(int id, Productos producto)
+        //modificar tp9
+        public IActionResult Edit(int id, ProductoViewModel productoVM)
         {
+            if (id != productoVM.IdProducto)
+            {
+                return NotFound();
+            }
             if (!ModelState.IsValid)
             {
-                return View(producto);
+                return View(productoVM);
             }
+            var producto = new Productos
+            {
+                IdProducto = productoVM.IdProducto,
+                Descripcion = productoVM.Descripcion,
+                Precio = productoVM.Precio
+            };
             _repo.ModificarProducto(id, producto);
             return RedirectToAction("Index");
         }

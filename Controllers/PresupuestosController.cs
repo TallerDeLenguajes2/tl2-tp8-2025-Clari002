@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using tl2_tp8_2025_Clari002.Models;
 using tl2_tp8_2025_Clari002.Repositorios;
+using tl2_tp8_2025_Clari002.ViewModels;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace tl2_tp8_2025_Clari002.Controllers
 {
@@ -31,6 +33,7 @@ namespace tl2_tp8_2025_Clari002.Controllers
             {
                 return NotFound();//error 404
             }
+            
             return View(presupuesto);
         }
 
@@ -88,6 +91,32 @@ namespace tl2_tp8_2025_Clari002.Controllers
             }
             _repo.ModificarPresupuesto(id, presupuesto);
             return RedirectToAction("Index");
+        }
+
+        //agregado tp9 (para mostrar formulario)
+        [HttpGet]
+        public IActionResult AgregarProducto(int id)
+        {
+            var productos = new ProductosRepository().ListarProductos();
+            var model = new AgregarproductoViewModel
+            {
+                IdPresupuesto = id,
+                ListaProductos = new SelectList(productos, "IdProducto", "Descripcion")
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult AgregarProducto(AgregarproductoViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var productos = new ProductosRepository().ListarProductos();
+                model.ListaProductos = new SelectList(productos, "IdProducto", "Descripcion");
+
+                return View(model);
+            }
+            _repo.AgregarProductoAlPresupuesto(model.IdPresupuesto, model.IdProducto, model.Cantidad);
+            return RedirectToAction("Details", new { id = model.IdPresupuesto });
         }
 
     }

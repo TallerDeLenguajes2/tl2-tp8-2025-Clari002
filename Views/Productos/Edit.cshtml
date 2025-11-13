@@ -1,4 +1,4 @@
-@model tl2_tp8_2025_Clari002.Models.Productos
+@model tl2_tp8_2025_Clari002.ViewModels.ProductoViewModel
 
 @{
     ViewData["Title"] = "Editar Producto";
@@ -11,11 +11,19 @@
     <div class="mb-3">
         <label class="form-label">Descripcion</label>
         <input asp-for="Descripcion" class="form-control"/>
+        <span asp-validation-for="Descripcion" class="text-danger"></span>@*agregado tp9*@
+        
     </div>
     <div class="mb-3">
         <label class="form-label">Precio</label>
         <input asp-for="Precio" class="form-control" type="number"/>
+        <span asp-validation-for="Precio" class="text-danger"></span>@*agregado tp9*@
+    
     </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
     <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
 </form>
+@*agregado tp9*@
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
