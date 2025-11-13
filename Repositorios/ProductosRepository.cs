@@ -7,7 +7,7 @@ namespace tl2_tp8_2025_Clari002.Repositorios
     //Repositorio creado en paso 1
     public class ProductosRepository
     {
-        private string cadenaConexion = "Data Source=Tienda_final.db;";
+        private string cadenaConexion = "Data Source=DB/Tienda_final.db;";
 
         public void CrearProducto(Productos producto)
         {

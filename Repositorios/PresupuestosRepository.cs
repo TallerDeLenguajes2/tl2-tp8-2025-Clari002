@@ -6,7 +6,7 @@ namespace tl2_tp8_2025_Clari002.Repositorios
 {
     public class PresupuestosRepository
     {
-        private string cadenaConexion = "Data Source=Tienda_final.db;";
+        private string cadenaConexion = "Data Source=DB/Tienda_final.db;";
 
         public void CrearPresupuesto(Presupuestos presupuesto)
         {
